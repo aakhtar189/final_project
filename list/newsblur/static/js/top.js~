@@ -1,0 +1,5 @@
+$(function() {
+	 $(window).scroll(function() {
+		  if($(this).scrollTop()>100) {
+			   $('.toTop').fadeIn('fast'); } else { $('.toTop').fadeOut('fast'); } });
+$('.toTop').click(function() { $('body,html').animate({scrollTop:0},400);return false }); });

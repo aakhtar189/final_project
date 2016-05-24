@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+  <table  class="table table-bordered table-striped">
+    <thead>
+      <th>Title</th>
+      <th>Created</th>
+      <th>Actions</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+      <tr>
+        <th><a href="{{ url_for('admin.edit', slug=post.slug) }}">{{ post.title }}</a></th>
+        <td>{{ post.created_at.strftime('%d-%m-%Y') }}</td>
+        <td><a href="{{ url_for("admin.edit", slug=post.slug) }}" class="btn primary">Edit</a></td>
+        <td><a href="{{ url_for("admin.delete", slug=post.slug) }}" onclick="return confirm('Are you sure ?');"class="btn primary">Delete
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

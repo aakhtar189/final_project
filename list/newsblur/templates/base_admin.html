@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>NewsBlur-Admin</title>
+    <link rel="icon" href="http://0.0.0.0:5000/static/img/icon.jpg" type="image/x-icon">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .content {padding-top: 80px;}
+         a.brand {color: #fff }
+         p{
+          text-align: justify;
+          margin-right: 7cm;
+         }
+         body {
+         background-color: #EBEBEB;
+          }
+         </style>
+  </head>
+
+  <body>
+
+    {%- block topbar -%}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <h2>
+              <u style="text-decoration: none; border-bottom: 1px solid white">
+               <a href="/" class="brand"><strong style="font-style: italic; color: #3f51b5;">News</strong><strong style="font-style: italic; color: white;">Blur</strong></a>
+               </u>
+              <small style="color: white";>&nbsp<mediun style="font-style: italic;">( Stay ahead with summarised news! )</medium></small>
+
+
+          </h2>
+        </div>
+        <div class="navbar-collapse">
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    {%- endblock -%}
+
+    <div class="container">
+      <div class="content">
+
+        {% block page_header %}{% endblock %}
+        {% block content %}{% endblock %}
+        
+      </div>
+    </div>
+    {% block js_footer %}{% endblock %}
+    {% block footer%}{% endblock%}
+
+  </body>
+}
+</html>

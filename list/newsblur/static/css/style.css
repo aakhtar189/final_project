@@ -1,0 +1,108 @@
+body {
+    background-color: #EBEBEB;
+}
+span.highlight {
+    background-color: yellow;
+}
+
+
+.content {
+	padding-top: 5px;
+	max-width: 18cm;
+	margin-right: 6cm;
+
+	/*background-color: #00e5ff;*/
+	margin-top: 110px;
+	
+	
+	} 
+a.brand {
+	color: #FFFFFF; 
+	}
+
+footer {
+	display: block;
+	background-color: #1976d2;
+	text-align: center;
+	position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.025rem;
+    height: 1.5cm;
+    text-align: auto;
+}	
+
+p {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 120%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+div.popular {
+	margin-left: 19cm;
+	top:110px;
+	position:fixed;
+	padding-top: 0px;
+	font-family: "Times New Roman", Georgia, Serif;
+	margin-right: 80px;
+	
+	
+}
+
+header{
+	position: fixed;
+	background-color: #1976d2;
+	width:100%;
+	padding-top: 1.7cm;
+	height: auto;
+}
+
+
+
+#toTop:visited {
+	color: #6B70F7;
+}
+#toTop:hover {
+	text-decoration: none;
+	background: #0d47a1;
+	color: #fff;
+	-webkit-transition: all linear 0.2s;
+    -moz-transition: all linear 0.2s;
+    -o-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+}
+h1, h2, h3, h4, h5, h6{
+  margin-top:15px;
+  margin-bottom:5px;
+}
+
+span.g-search-button {
+  display: inline-block;
+  width: 16px;
+  height: 7px;
+  position: relative;
+  margin-right: 15cm;
+  top: 3px;
+  
+
+
+  background-color: black;  /* Replace with your own image */
+}
+
+#toTop {
+		position: fixed;
+		right: 10px;
+		z-index: 1000;
+		bottom: 60px;
+		width: 40px;
+		height: 40px;
+		background: none repeat scroll 0% 0% #42a5f5;
+		color: #FFF;
+		border-radius: 3px;
+		cursor: pointer;
+		transition: all 0.4s ease 0s;
+		text-align: center;
+		line-height: 40px;
+		}

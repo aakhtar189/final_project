@@ -1,0 +1,126 @@
+<header>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+<b>Follow us on:</b>
+
+<a target="_blank" title="find us on Facebook" href="https://www.facebook.com/newsblurs/"><img alt="follow me on twitter" src="http://127.0.0.1:5001/static/img/fb2.jpg" border=0 width="20px" height="20px"></a>&nbsp
+
+ <a target="_blank" title="follow me on twitter" href="http://www.twitter.com/"><img alt="follow me on twitter" src="http://127.0.0.1:5001/static/img/twitter.jpg" border=0 width="20px" height="20px"></a>&nbsp
+
+<a target="_blank" title="find us on google plus" href="http://www.google.com"><img alt="follow me on google plus" src="http://127.0.0.1:5001/static/img/google_icon.jpg" border=0 width="20px" height="20px"></a>&nbsp
+
+<a target="_blank" title="find us on linkedin" href="http://www.google.com"><img alt="follow me on linkedin" src="http://127.0.0.1:5001/static/img/linkedin.jpg" border=0 width="20px" height="20px"></a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+views as: <a title="view as thumbnail" href="http://0.0.0.0:5000/"><img alt="view as thumbnail" src="http://127.0.0.1:5001/static/img/thumbnail.jpg" border=0 width="20px" height="20px"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+
+<input type="text" name="q" id="site-search-input" autocomplete="off" value="Search.." class="gray" />
+<span id="g-search-button"></span>
+
+</header>
+
+{% extends "base.html" %}
+
+
+
+{% block popluar %}
+
+<div class="popular">
+<h3><strong>Popular News</strong></h3>
+{% for post in posts %}
+      
+      <hr style="border: none; height: 1px;color: blue;background: #64b5f6;"><h4><a href="{{ url_for('posts.detail', slug=post.slug) }}">{{ post.title }}</a></h4></hr>
+
+      
+      {%  endfor %}
+  
+</div>
+ 
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+    <hr style="border: none; height: 1px;color: blue;background: #64b5f6;"
+    {% if post.image_url %}
+      <p style="margin-left: 0cm;"><img  src="{{ post.image_url }}"  width="150" height="145" border="0" align="left" hspace="auto"></p>
+      {% endif %}
+    
+      <h4><a href="{{ url_for('posts.detail', slug=post.slug) }}">{{ post.title }}</a></h4>
+
+      <p><b>Updated on: </b>
+        {{ post.created_at.strftime('%H:%M | %d-%m-%Y') }} |
+        {% with total=post.comments|length %}
+            {{ total }} comment {%- if total > 1 %}s{%- endif -%} 
+            
+        {% endwith %}
+
+      </p>
+      
+      {% if post.body %}
+        {% if post.post_type == 'Quote' %}
+          <blockquote>{{ post.body|truncate(100) }}</blockquote>
+          <p>{{ post.author }}</p>
+        {% else %}
+          <p>{{ post.body|truncate(155)}}</p>
+          
+        {% endif %}
+      {% endif %}
+      {% if post.embed_code %}
+        {{ post.embed_code|safe() }}
+      {% endif %}
+      <p>&nbsp</p>
+      
+      
+    {% endfor %}
+    
+   
+    
+{% endblock %}
+
+</hr>
+
+
+
+
+{% block footer %}<footer>
+    
+ <b style="color: #a7ffeb"> copyright &copy; 2016-2017 Asif Akhtar. All rights reserved</b>
+ <br>
+  <b style="color: #a7ffeb">Design by Asif Akhtar</b> </br>
+ 
+</footer>
+{% endblock %}
+
+{% block totop %}
+<div id="toTop">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </div>
+  
+  <script type="text/javascript"> 
+  $('#myTab a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+  $('#toTop').click(function () {
+    $('body,html').animate({
+    scrollTop: 0
+    }, 1000);
+  });
+  $("#toTop").addClass("hidett");
+  $(window).scroll(function () {
+    if ($(this).scrollTop() < 400) {
+      $("#toTop").addClass("hidett").removeClass("showtt");
+    } else {
+      $("#toTop").removeClass("hidett").addClass("showtt");
+    }
+  });
+  (function($){
+  $( document ).ready( function() {
+  prettyPrint();
+  } );
+   
+  }($))
+  </script>
+{% endblock %}
+
+{% block folk %}<h4 style="color: red strong">Thats all Folk!!</h4>{% endblock %}
+
+

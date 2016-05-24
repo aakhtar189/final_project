@@ -1,0 +1,58 @@
+<title>NewsBlur</title>
+
+{% extends "base_admin.html" %}
+{% import '_forms.html' as forms %}
+
+{% block page_header %}
+  <div class="page-header">
+    <h3><strong><u>{{ post.title }}</u></strong></h3>
+  </div>
+{% endblock %}
+
+{% block content %}
+  {% if post.body %}
+    {% if post.post_type == 'Quote' %}
+      <blockquote>{{ post.body }}</blockquote>
+      <p>{{ post.author }}</p>
+    {% else %}
+      <p>{{ post.body }}</p>
+    {% endif %}
+  {% endif %}
+  {% if post.embed_code %}
+    {{ post.embed_code|safe() }}
+  {% endif %}
+  {% if post.image_url %}
+    <p><img src="{{ post.image_url }}" width="874" height="350"></p>
+  {% endif %}
+  <p><strong>updated on:{{ post.created_at.strftime('%H:%M | %d-%m-%Y') }}</strong></p>
+  <hr>
+  <h3><strong>Comments</strong></h3>
+  {% if post.comments %}
+    {% for comment in post.comments %}
+       <p>{{ comment.body }}</p>
+       <p><strong>{{ comment.author }}</strong> <small>on {{ comment.created_at.strftime('%H:%M | %d-%m-%Y') }}</small></p>
+      {{ comment.text }}
+    {% endfor %}
+  {% endif %}
+  <hr>
+  <h4>Add a comment</h4>
+  <form action="." method="post">
+    {{ forms.render(form) }}
+    <div class="actions">
+      <input type="submit" class="btn btn-primary" value="comment">
+    </div>
+  </form>
+   <p><strong>Share:</strong><IMG SRC="http://127.0.0.1:5001/static/img/Share.png" height="25" width= "25" hspace="10"></p>
+  <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+<a class="a2a_button_linkedin"></a>
+<a class="a2a_button_whatsapp"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+  <hr>
+{% endblock %}
